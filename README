@@ -1,20 +1,23 @@
 *********************************************											
-			Subdomain Enumerator			
-				Charles Smith				
+	    Subdomain Enumerator			
+		Charles Smith				
 *********************************************
-				  ABOUT
-	This is a simple program written in
-	Java that uses a list to enumerate
-	hosts for a specified domain
+		  ABOUT
+     This is a simple program written in
+     Java that uses a list to enumerate
+     hosts for a specified domain
 	
 *********************************************
-			FEATURES TO-DO
-	- allow user to select external list
-	- change component output is put in
-	- allow user to copy subdomain, or
-	  to copy ip address
-	- allow user to save output to file
+             FEATURES TO-DO
+     - allow user to select external list
+     - change component output is put in
+     - allow user to copy subdomain, or
+       to copy ip address
+     - allow user to save output to file
 
 *********************************************
-			TO-DO
-	- comment code(!)
+	          TO-DO
+     - comment code(!)
+     - create small word list with more 
+       common sub domains
+	  
