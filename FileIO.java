@@ -11,7 +11,7 @@ public class FileIO {
             sc = new Scanner( new File( "subs.txt" ) );
         } catch (FileNotFoundException e) {
             System.out.println( "Error opening file" );
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
         ArrayList<String> list = new ArrayList<String>();
