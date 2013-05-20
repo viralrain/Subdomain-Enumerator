@@ -8,9 +8,8 @@
      hosts for a specified domain
 	
 *********************************************
-             FEATURES TO-DO
+             FEATURES TO ADD
      - allow user to select external list
-     - change component output is put in
      - allow user to copy subdomain, or
        to copy ip address
      - allow user to save output to file
@@ -18,6 +17,7 @@
 *********************************************
 	          TO-DO
      - comment code(!)
+     - change component output is put in
      - create small word list with more 
        common sub domains
 	  
