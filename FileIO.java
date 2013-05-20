@@ -8,7 +8,7 @@ public class FileIO {
 
         Scanner sc = null;
         try {
-            sc = new Scanner( new File( "C:\\Users\\Chad\\Development\\Java\\DNSLookup\\src\\com\\viralrain\\dns\\subs.txt" ) );
+            sc = new Scanner( new File( "subs.txt" ) );
         } catch (FileNotFoundException e) {
             System.out.println( "Error opening file" );
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
