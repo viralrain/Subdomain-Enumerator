@@ -6,18 +6,20 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+// class: Gui
+// purpose: create the program's GUI
 public class Gui extends JFrame{
 
     public static JTextField hostname;      // input text field
     public static JTextArea output;         // output text area
-    public static JLabel status;
-    public static JProgressBar progress;
-    public static JButton lookup;
+    public static JLabel status;            // status label
+    public static JProgressBar progress;    // progress bar
+    public static JButton lookup;           // lookup button
 
+    // get the list of sub-domains
     public static String[] subs = FileIO.getList( "subs.txt" );
 
-    protected Lookup task;
-
+    // create the window
     public Gui(){
         super("DNS Enum V1 - Charles Smith");
 
@@ -36,8 +38,6 @@ public class Gui extends JFrame{
         JScrollPane jsp = new JScrollPane(output);
         jsp.setBorder( BorderFactory.createLineBorder( Color.lightGray ) );
 
-
-
         // setup buttons panel, with padding, grid layout
         JPanel buttons = new JPanel();
         buttons.setBorder( BorderFactory.createMatteBorder( 5, 0, 0, 0, this.getBackground() ) );
@@ -49,6 +49,7 @@ public class Gui extends JFrame{
         buttons.add( lookup );
         buttons.add( clear );
 
+        // status bar with border, status label and progress bar
         JPanel statusBar = new JPanel();
         statusBar.setLayout(new GridLayout(1, 2, 5, 5));
         statusBar.setPreferredSize(new Dimension(100, 23));
@@ -57,9 +58,8 @@ public class Gui extends JFrame{
                     BorderFactory.createMatteBorder( 2, 2, 2, 2, this.getBackground() )
                 ));
             status = new JLabel( "Idle" );
-            progress = new JProgressBar( 0, subs.length );
-            progress.setStringPainted( true );
-            progress.setMaximum( subs.length );
+            progress = new JProgressBar( 0, 100 );
+            progress.setStringPainted(true);
         statusBar.add( status );
         statusBar.add(progress);
 
@@ -71,6 +71,7 @@ public class Gui extends JFrame{
         main.add( jsp, BorderLayout.CENTER );
         main.add( buttons, BorderLayout.SOUTH );
 
+        // setup window options and add stuff to window
         this.setLayout( new BorderLayout() );
         this.add( main, BorderLayout.CENTER );
         this.add( statusBar, BorderLayout.SOUTH );
@@ -82,14 +83,21 @@ public class Gui extends JFrame{
     private class LookupListener implements ActionListener, PropertyChangeListener {
         @Override
         public void actionPerformed( ActionEvent e ) {
-            task = new Lookup();
+            // create new task for DNS lookups
+            Lookup task = new Lookup();
+            // reset progress bar
+            progress.setValue( 0 );
+            // create header for lookup output
             output.append( "----- Looking up hosts on: " + hostname.getText() + " -----\n" );
+            // add listener for thread and execute the task
             task.addPropertyChangeListener(this);
             task.execute();
         }
 
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
+            // when the thread updates the progress
+            // update the progress bar
             if(evt.getPropertyName().equals("progress") ){
                 int p = (Integer)evt.getNewValue();
                 progress.setValue( p );
