@@ -43,6 +43,7 @@ public class Lookup extends SwingWorker<Void, Void> {
 
             // output the found sub-domain addresses
             for( String cur : curAddresses ){
+                cur = cur.substring( cur.lastIndexOf( '/' ) + 1 );
                 subd.ipList.addElement( new IPs( cur ) );
             }
             // increment the progress bar
